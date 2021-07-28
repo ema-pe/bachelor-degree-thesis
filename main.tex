@@ -1,0 +1,83 @@
+% !TeX encoding = UTF-8
+% !TeX program = pdflatex
+% !TeX spellcheck = it_IT
+
+\documentclass[Lau, italian, noexaminfo]{sapthesis}
+
+\usepackage[italian]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage[chapter]{minted}
+\usepackage{afterpage}
+\usepackage{wrapfig}
+\usepackage{csquotes} % Richiesto da biblatex.
+\usepackage[style=numeric]{biblatex}
+
+% Configurazione biblatex.
+\addbibresource{references.bib}
+
+% Configurazione di minted.
+\definecolor{LightGray}{gray}{0.9}
+\renewcommand{\listingscaption}{Codice sorgente}
+\renewcommand{\listoflistingscaption}{Elenco dei codici sorgente}
+\setminted{
+    linenos=true,
+    autogobble,
+    breaklines,
+}
+% Per codici sorgente molto lunghi: meglio spezzarli su più pagine.
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+% Definisco una sola volta alcuni test perché li riuso più volte.
+\newcommand{\thetitle}{Progettazione e sviluppo delle API in linguaggio Go per il sistema di messaggistica domain-specific di SeismoCloud}
+\newcommand{\theauthor}{Emanuele Petriglia}
+
+% Configurazione di hyperref.
+\hypersetup{
+  pdftitle     = {\thetitle},
+  pdfauthor    = {\theauthor},
+  colorlinks   = true,
+  urlcolor     = black,
+  linkcolor    = black,
+  citecolor    = black
+}
+
+% Configurazione di sapthesis.
+\title{\thetitle}
+\author{\theauthor}
+\IDnumber{1798177}
+\course{Informatica}
+\courseorganizer{Facoltà di Ingegneria dell'informazione, informatica e statistica}
+\AcademicYear{2020/2021}
+\copyyear{2021}
+\advisor{Prof. Emanuele Panizzi}
+
+\authoremail{petriglia.1798177@studenti.uniroma1.it}
+\versiondate{28 luglio 2021}
+\copyrightstatement{© 2021 Emanuele Petriglia. Tutti i diritti riservati. Rilasciata con licenza Creative Commons Attribuzione - Condividi allo stesso modo 4.0 Internazionale (CC BY-SA 4.0).}
+
+\begin{document}
+
+\frontmatter
+
+\input{frontmatter}
+
+\mainmatter
+
+\input{chapters/01_introduzione}
+
+\input{chapters/02_analisi_requisiti}
+
+\input{chapters/03_progettazione}
+
+\input{chapters/04_implementazione}
+
+\input{chapters/05_conclusione}
+
+\input{chapters/06_ringraziamenti}
+
+\backmatter
+
+\input{backmatter}
+
+\end{document}

@@ -1,0 +1,19 @@
+\chapter{Conclusione}
+\label{ch:concl}
+
+\section{Risultato ottenuto}
+
+Partendo dai lavori di progettazione di Michele Spina, in questa relazione è stato descritto il lavoro che ha portato all'implementazione di una versione minimale ma funzionante, chiamata anche \textit{minimum viable product } (MVP). In questa versione sono state progettate, sviluppate e implementate le sole funzionalità necessarie per l'effettiva messa in produzione del sistema. L'obiettivo è quello di ottenere feedback da parte degli utenti per veicolare al meglio gli sviluppi futuri. Anche per questo motivo il sistema è stato progettato in modo da essere facilmente modificabile ed estensibile.
+
+\section{Sviluppi futuri}
+
+Sono molti gli spunti emersi durante il lavoro. Prima di tutto è però bene precisare che per poter mettere in produzione il sistema è necessario un ulteriore lavoro di adattamento delle API con i client e di progettazione delle rispettive interfacce utente. In questa sezione vengono tuttavia specificati punti di sviluppo futuro solo per il lato server e per la funzionalità in generale.
+
+\paragraph{Algoritmo migliore per la creazione chat} Il punto critico dell'intero sistema è come il server determina la creazione di una chat in base a una richiesta ricevuta. Quando una chat viene creata per semplicità si associa la posizione geografica dell'utente che ha fatto la richiesta, ma tale associazione è approssimativa rispetto al terremoto. L'idea è quella di esplorare algoritmi più precisi e che reagiscano anche alle altre richieste di creazione, per esempio salvando in una lista le posizioni invece di salvare solo la prima. La raccolta di dati sulle posizioni geografiche è importante, perché influisce sulla generazione del nome della chat e sull'associazione con un terremoto.
+
+\paragraph{Test più robusti} Attualmente la soluzione adottata per i test è fragile e richiede l'intervento umano, consuma perciò anche molto tempo. L'idea è quella di strutturare meglio i test, creando un ambiente automatizzato e riproducibile per l'esecuzione dei test di integrazione, e poi scrivere e documentare i test unitari per le parti di codice in Go. In aggiunta i test di carico possono tornare utili per identificare i punti deboli del sistema che lo possono rallentare.
+
+\paragraph{Sistema delle notifiche} Nel sistema costruito è previsto l'invio delle notifiche basandosi sulle sottoscrizioni degli utenti, ma manca il sistema sottostante per l'invio effettivo di tali notifiche. Poiché tale sistema dipende strettamente dai sistemi operativi Android e iOS, l'idea è di appoggiarsi al servizio esterno Firebase Cloud Messaging di Google, che permette di inviare notifiche push.
+
+\paragraph{Istanza Nominatim di SeismoCloud} Per il momento nella generazione del nome di una chat e nell'associazione a un terremoto viene utilizzata l'istanza pubblica di Nominatime offerta da OpenStreetMap. Tale istanza impone dei limiti d'uso che sono adatti a delle interrogazioni sporadiche e non a un uso intensivo come fa SeismoCloud. Per tale ragione è necessario costruire un'istanza interna e personalizzata per gli scopi della funzionalità.
+
